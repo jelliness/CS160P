@@ -8,6 +8,9 @@ def access_page():
 
 @app.route('/login', methods=['POST'])
 def login():
+    return redirect(url_for('main_page'))
+    #return render_template(url_for('main_page'))
+    """
     username = request.form['username']
     password = request.form['password']
     
@@ -16,3 +19,4 @@ def login():
     else:
         error_message = "There was an error in Accessing the Main Page, please click the back button to go back to the Access Page and provide a correct credential"
         return render_template('error.html', error_message=error_message, back_url=url_for('access_page'))
+    """

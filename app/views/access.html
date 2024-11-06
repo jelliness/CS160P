@@ -3,67 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>Customer Type Quiz</title>
     <style>
-        body {
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
             font-family: Arial, sans-serif;
-            background-color: #7670D4;
+        }
+        body {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
+            background: linear-gradient(135deg, #7670D4, #4D4CAF);
         }
-        .login-container {
+        .quiz-container {
             background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
+            padding: 60px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 500px;
             text-align: center;
         }
         h1 {
-            margin-bottom: 20px;
-            color: #333;
+            margin-bottom: 30px;
+            color: #4D4CAF;
+            font-size: 36px; /* Increased font size */
         }
-        label {
-            display: block;
-            text-align: left;
-            margin-bottom: 8px;
+        p {
+            margin-bottom: 40px;
+            color: #555;
+            font-size: 20px; /* Increased font size */
+            line-height: 1.6;
         }
-        input[type="text"],
-        input[type="password"] {
-            width: calc(100% - 20px);
-            padding: 8px;
-            margin-bottom: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         input[type="submit"] {
             width: 100%;
-            padding: 10px;
+            padding: 16px; /* Increased padding */
             border: none;
-            background-color: #007bff;
+            background-color: #4D4CAF;
             color: #fff;
             cursor: pointer;
-            border-radius: 4px;
-            font-size: 16px;
+            border-radius: 8px; /* Slightly larger border radius */
+            font-size: 18px; /* Increased font size */
+            transition: background-color 0.3s;
         }
         input[type="submit"]:hover {
-            background-color: #0056b3;
+            background-color: #3A399B;
+        }
+        .footer-text {
+            margin-top: 30px; /* Increased space */
+            color: #777;
+            font-size: 16px; /* Increased font size */
+        }
+        .footer-text a {
+            color: #4D4CAF;
+            text-decoration: none;
+            font-size: 18px; /* Larger font for the link */
         }
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <h1>Login</h1>
+    <div class="quiz-container">
+        <h1>Customer Type Quiz</h1>
+        <p>Discover your customer type by taking this quick and easy quiz! Get insights into your shopping style and preferences.</p>
         <form action="{{ url_for('login') }}" method="post">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username"><br><br>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password"><br><br>
-            <input type="submit" value="Login">
+            <input type="submit" value="Take Quiz">
         </form>
+        <div class="footer-text">
+            <p>Want to see other results? <a href="#">See Results</a></p>
+        </div>
     </div>
 </body>
 </html>
