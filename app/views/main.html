@@ -125,7 +125,7 @@
         <div class="form-section" id="page-2">
             <h2>Family and Household</h2>
 
-            <label>Do you live alone or with others?</label><br>
+            <label>Do you live alone?</label><br>
             <div class="radio-group">
                 <input type="radio" name="living_with" value="Yes"> Yes
                 <input type="radio" name="living_with" value="No"> No
@@ -248,6 +248,25 @@
                 <input type="radio" name="accepted_cmp5" value="0"> No
             </div><br>
 
+            <button type="button" id="next-btn-5">Next</button>
+        </div>
+
+        <!-- Complaints and Response Page -->
+        <div class="form-section" id="page-6">
+            <h2>Complaints and Customer Response</h2>
+
+            <label for="complain">Have you ever made a formal complaint to us?</label><br>
+            <div class="radio-group">
+                <input type="radio" name="complain" value="1"> Yes
+                <input type="radio" name="complain" value="0"> No
+            </div><br>
+
+            <label for="response">Do you usually respond to our surveys or feedback requests?</label><br>
+            <div class="radio-group">
+                <input type="radio" name="response" value="1"> Yes
+                <input type="radio" name="response" value="0"> No
+            </div><br>
+
             <button type="submit" id="submit-btn" value="Submit">Submit</button>
         </div>
 
@@ -283,11 +302,48 @@
             showPage(currentPage);
         });
 
-        // Redirect to result.html on form submit
-        //document.getElementById('questionnaire-form').addEventListener('submit', function(event) {
-        //    event.preventDefault(); // Prevent form from actually submitting
-        //    window.location.href = '/predict'; // Redirect to result.html
-        //});
+        document.getElementById('next-btn-5').addEventListener('click', function() {
+            currentPage = 6;
+            showPage(currentPage);
+        });
+
+        document.getElementById('questionnaire-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Collect form data
+            const formData = new FormData(event.target);
+            const jsonData = {};
+
+            // Fixing the arrow function typo and collecting form data properly
+            formData.forEach((value, key) => {
+                jsonData[key] = value;
+            });
+
+            // Logging jsonData to check if it's correct
+            console.log(JSON.stringify(jsonData));
+
+            // Send JSON data using fetch API
+            fetch('/predict', { // Using '/predict' as the endpoint URL.
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(jsonData)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(data => {
+                // Display the result on the page
+                document.body.innerHTML = data;  // This will replace the whole body with the response HTML
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
+        });
     </script>
 
 </body>
