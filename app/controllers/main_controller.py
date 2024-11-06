@@ -1,7 +1,7 @@
 from flask import render_template, jsonify
 from app import app
 import sklearn
-import models.model as mod
+from app.models.model import predict_class 
 
 @app.route('/main')
 def main_page():
@@ -18,7 +18,6 @@ def predict():
         'living_with', 'children', 'family_size', 'is_parent', 'total_promos'
     ]
 
-    result = mod.predict_class(required_fields)
+    result = predict_class(required_fields)
 
-    # Return prediction as JSON response
-    return jsonify({"customer_type": result[0]})
+    return render_template("result.html", customer_type=result[0])

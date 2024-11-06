@@ -3,213 +3,292 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer Information Form</title>
+    <title>Cluster Prediction Questionnaire</title>
     <style>
-        * {
-            box-sizing: border-box;
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #7670D4, #4D4CAF);
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
         }
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: linear-gradient(135deg, #7670D4, #4D4CAF);
-        }
-        .form-container {
-            background-color: #fff;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            width: 100%;
-            max-width: 500px;
-            overflow-y: auto;
-            max-height: 90vh;
-        }
+
         h1 {
-            margin-bottom: 20px;
-            color: #4D4CAF;
-            font-size: 24px;
             text-align: center;
+            color: #333;
+            margin-top: 20px;
         }
+
+        h2 {
+            color: #2c3e50;
+            margin-top: 30px;
+        }
+
+        form {
+            width: 80%;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
         label {
+            font-size: 14px;
+            margin-top: 10px;
             display: block;
-            margin-top: 15px;
-            font-weight: bold;
             color: #555;
         }
+
+        input[type="radio"], input[type="number"] {
+            margin-top: 5px;
+        }
+
         input[type="number"] {
+            padding: 8px;
+            margin-bottom: 20px;
             width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
         }
-        .radio-group {
-            display: flex;
-            gap: 10px;
-            margin-top: 5px;
+
+        input[type="radio"] {
+            margin-right: 10px;
         }
-        .radio-group label {
-            font-weight: normal;
+
+        .form-section {
+            margin-bottom: 20px;
+            display: none;
         }
-        input[type="submit"] {
-            width: 100%;
-            padding: 12px;
-            margin-top: 20px;
+
+        .form-section.active {
+            display: block;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
             border: none;
-            background-color: #4D4CAF;
-            color: #fff;
-            cursor: pointer;
-            border-radius: 5px;
+            padding: 12px 20px;
             font-size: 16px;
-            transition: background-color 0.3s;
+            cursor: pointer;
+            border-radius: 4px;
+            display: block;
+            margin: 20px auto;
         }
-        input[type="submit"]:hover {
-            background-color: #3A399B;
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .radio-group {
+            margin-top: 10px;
+        }
+
+        .radio-group input {
+            margin-right: 15px;
+        }
+
+        #submit-btn {
+            background-color: #2ecc71;
+        }
+
+        #submit-btn:hover {
+            background-color: #27ae60;
         }
     </style>
 </head>
 <body>
-    <div class="form-container">
-        <h1>Customer Information Form</h1>
-        <form action="{{ url_for('predict') }}" method="post">
-            <label>Education</label>
+
+    <h1>Cluster Prediction Questionnaire</h1>
+
+    <form id="questionnaire-form" action="{{ url_for('predict') }}" method="post">
+
+        <!-- Demographics Page -->
+        <div class="form-section active" id="page-1">
+            <h2>Demographics</h2>
+
+            <label for="education">What is your highest level of education?</label><br>
+            <input type="radio" name="education" value="0"> Undergraduate<br>
+            <input type="radio" name="education" value="1"> Graduate<br>
+            <input type="radio" name="education" value="2"> Post-Graduate<br><br>
+
+            <label for="income">What is your annual income in USD?</label>
+            <input type="number" name="income"><br><br>
+
+            <label for="age">What is your current age?</label>
+            <input type="number" name="age"><br><br>
+
+            <button type="button" id="next-btn-1">Next</button>
+        </div>
+
+        <!-- Family and Household Page -->
+        <div class="form-section" id="page-2">
+            <h2>Family and Household</h2>
+
+            <label>Do you live alone or with others?</label><br>
             <div class="radio-group">
-                <label><input type="radio" name="education" value="0" required> 0</label>
-                <label><input type="radio" name="education" value="1"> 1</label>
-                <label><input type="radio" name="education" value="2"> 2</label>
-            </div>
+                <input type="radio" name="living_with" value="Yes"> Yes
+                <input type="radio" name="living_with" value="No"> No
+            </div><br>
 
-            <label>Income</label>
-            <input type="number" name="income" min="1" required>
-
-            <label>Kidhome</label>
-            <input type="number" name="kidhome" min="0">
-
-            <label>Teenhome</label>
-            <input type="number" name="teenhome" min="0">
-
-            <label>Recency</label>
-            <input type="number" name="recency" min="0">
-
-            <label>Wines</label>
-            <input type="number" name="wines" min="0">
-
-            <label>Fruits</label>
-            <input type="number" name="fruits" min="0">
-
-            <label>Meat</label>
-            <input type="number" name="meat" min="0">
-
-            <label>Fish</label>
-            <input type="number" name="fish" min="0">
-
-            <label>Sweets</label>
-            <input type="number" name="sweets" min="0">
-
-            <label>Gold</label>
-            <input type="number" name="gold" min="0">
-
-            <label>NumDealsPurchases</label>
-            <input type="number" name="num_deals_purchases" min="0">
-
-            <label>NumWebPurchases</label>
-            <input type="number" name="num_web_purchases" min="0">
-
-            <label>NumCatalogPurchases</label>
-            <input type="number" name="num_catalog_purchases" min="0">
-
-            <label>NumStorePurchases</label>
-            <input type="number" name="num_store_purchases" min="0">
-
-            <label>NumWebVisitsMonth</label>
-            <input type="number" name="num_web_visits_month" min="0">
-
-            <!-- Repeat similar blocks for the other fields with radio buttons -->
-            <label>AcceptedCmp3</label>
+            <label>Do you have any children?</label><br>
             <div class="radio-group">
-                <label><input type="radio" name="accepted_cmp3" value="0" required> 0</label>
-                <label><input type="radio" name="accepted_cmp3" value="1"> 1</label>
-            </div>
+                <input type="radio" name="children" value="Yes"> Yes
+                <input type="radio" name="children" value="No"> No
+            </div><br>
 
-            <label>AcceptedCmp4</label>
+            <label for="family_size">Including yourself, how many people are in your family?</label>
+            <input type="number" name="family_size"><br><br>
+
+            <label>Are you a parent of one or more children?</label><br>
             <div class="radio-group">
-                <label><input type="radio" name="accepted_cmp4" value="0" required> 0</label>
-                <label><input type="radio" name="accepted_cmp4" value="1"> 1</label>
-            </div>
+                <input type="radio" name="is_parent" value="Yes"> Yes
+                <input type="radio" name="is_parent" value="No"> No
+            </div><br>
 
-            <label>AcceptedCmp5</label>
+            <label for="kidhome">How many children under 12 years old live at home with you?</label>
+            <input type="number" name="kidhome"><br><br>
+
+            <label for="teenhome">How many teenagers (ages 13-18) live at home with you?</label>
+            <input type="number" name="teenhome"><br><br>
+
+            <button type="button" id="next-btn-2">Next</button>
+        </div>
+
+        <!-- Customer Engagement Page -->
+        <div class="form-section" id="page-3">
+            <h2>Customer Engagement</h2>
+
+            <label for="recency">How many days has it been since your last purchase with us?</label>
+            <input type="number" name="recency"><br><br>
+
+            <label for="customer_for">How many days have you been a customer with us?</label>
+            <input type="number" name="customer_for"><br><br>
+
+            <label for="total_promos">How many promotions have you used since you became our customer?</label>
+            <input type="number" name="total_promos"><br><br>
+
+            <label for="num_web_visits_month">How many times do you visit our website in a typical month?</label>
+            <input type="number" name="num_web_visits_month"><br><br>
+
+            <button type="button" id="next-btn-3">Next</button>
+        </div>
+
+        <!-- Purchase Behavior Page -->
+        <div class="form-section" id="page-4">
+            <h2>Purchase Behavior</h2>
+
+            <label for="wines">How much do you spend on wine in a typical month (in USD)?</label>
+            <input type="number" name="wines"><br><br>
+
+            <label for="fruits">How much do you spend on fruits in a typical month (in USD)?</label>
+            <input type="number" name="fruits"><br><br>
+
+            <label for="meat">How much do you spend on meat in a typical month (in USD)?</label>
+            <input type="number" name="meat"><br><br>
+
+            <label for="fish">How much do you spend on fish in a typical month (in USD)?</label>
+            <input type="number" name="fish"><br><br>
+
+            <label for="sweets">How much do you spend on sweets in a typical month (in USD)?</label>
+            <input type="number" name="sweets"><br><br>
+
+            <label for="gold">How much do you spend on gold or luxury items in a typical month (in USD)?</label>
+            <input type="number" name="gold"><br><br>
+
+            <label for="num_deals_purchases">How many of your purchases are made with promotional deals in a typical month?</label>
+            <input type="number" name="num_deals_purchases"><br><br>
+
+            <label for="num_web_purchases">How many purchases do you make online in a typical month?</label>
+            <input type="number" name="num_web_purchases"><br><br>
+
+            <label for="num_catalog_purchases">How many purchases do you make from catalogs in a typical month?</label>
+            <input type="number" name="num_catalog_purchases"><br><br>
+
+            <label for="num_store_purchases">How many purchases do you make in physical stores in a typical month?</label>
+            <input type="number" name="num_store_purchases"><br><br>
+
+            <label for="spent">What is your total spending with us so far (in USD)?</label>
+            <input type="number" name="spent"><br><br>
+
+            <button type="button" id="next-btn-4">Next</button>
+        </div>
+
+        <!-- Marketing Campaign Engagement Page -->
+        <div class="form-section" id="page-5">
+            <h2>Marketing Campaign Engagement</h2>
+
+            <label>Did you respond positively to our first marketing campaign?</label><br>
             <div class="radio-group">
-                <label><input type="radio" name="accepted_cmp5" value="0" required> 0</label>
-                <label><input type="radio" name="accepted_cmp5" value="1"> 1</label>
-            </div>
+                <input type="radio" name="accepted_cmp1" value="1"> Yes
+                <input type="radio" name="accepted_cmp1" value="0"> No
+            </div><br>
 
-            <label>AcceptedCmp1</label>
+            <label>Did you respond positively to our second marketing campaign?</label><br>
             <div class="radio-group">
-                <label><input type="radio" name="accepted_cmp1" value="0" required> 0</label>
-                <label><input type="radio" name="accepted_cmp1" value="1"> 1</label>
-            </div>
+                <input type="radio" name="accepted_cmp2" value="1"> Yes
+                <input type="radio" name="accepted_cmp2" value="0"> No
+            </div><br>
 
-            <label>AcceptedCmp2</label>
+            <label>Did you respond positively to our third marketing campaign?</label><br>
             <div class="radio-group">
-                <label><input type="radio" name="accepted_cmp2" value="0" required> 0</label>
-                <label><input type="radio" name="accepted_cmp2" value="1"> 1</label>
-            </div>
+                <input type="radio" name="accepted_cmp3" value="1"> Yes
+                <input type="radio" name="accepted_cmp3" value="0"> No
+            </div><br>
 
-            <label>Complain</label>
+            <label>Did you respond positively to our fourth marketing campaign?</label><br>
             <div class="radio-group">
-                <label><input type="radio" name="complain" value="0" required> 0</label>
-                <label><input type="radio" name="complain" value="1"> 1</label>
-            </div>
+                <input type="radio" name="accepted_cmp4" value="1"> Yes
+                <input type="radio" name="accepted_cmp4" value="0"> No
+            </div><br>
 
-            <label>Response</label>
+            <label>Did you respond positively to our fifth marketing campaign?</label><br>
             <div class="radio-group">
-                <label><input type="radio" name="response" value="0" required> 0</label>
-                <label><input type="radio" name="response" value="1"> 1</label>
-            </div>
+                <input type="radio" name="accepted_cmp5" value="1"> Yes
+                <input type="radio" name="accepted_cmp5" value="0"> No
+            </div><br>
 
-            <label>Customer_For</label>
-            <input type="number" name="customer_for" min="1" required>
+            <button type="submit" id="submit-btn" value="Submit">Submit</button>
+        </div>
 
-            <label>Age</label>
-            <input type="number" name="age" min="1" required>
+    </form>
 
-            <label>Spent</label>
-            <input type="number" name="spent" min="0">
+    <script>
+        let currentPage = 1;
 
-            <label>Living_With</label>
-            <div class="radio-group">
-                <label><input type="radio" name="living_with" value="0" required> 0</label>
-                <label><input type="radio" name="living_with" value="1"> 1</label>
-            </div>
+        function showPage(page) {
+            document.querySelectorAll('.form-section').forEach(function(section) {
+                section.classList.remove('active');
+            });
+            document.getElementById('page-' + page).classList.add('active');
+        }
 
-            <label>Children</label>
-            <input type="number" name="children" min="0">
+        document.getElementById('next-btn-1').addEventListener('click', function() {
+            currentPage = 2;
+            showPage(currentPage);
+        });
 
-            <label>Family_Size</label>
-            <input type="number" name="family_size" min="0">
+        document.getElementById('next-btn-2').addEventListener('click', function() {
+            currentPage = 3;
+            showPage(currentPage);
+        });
 
-            <label>Is_Parent</label>
-            <div class="radio-group">
-                <label><input type="radio" name="is_parent" value="0" required> 0</label>
-                <label><input type="radio" name="is_parent" value="1"> 1</label>
-            </div>
+        document.getElementById('next-btn-3').addEventListener('click', function() {
+            currentPage = 4;
+            showPage(currentPage);
+        });
 
-            <label>Total_Promos</label>
-            <div class="radio-group">
-                <label><input type="radio" name="total_promos" value="0" required> 0</label>
-                <label><input type="radio" name="total_promos" value="1"> 1</label>
-                <label><input type="radio" name="total_promos" value="2"> 2</label>
-                <label><input type="radio" name="total_promos" value="3"> 3</label>
-                <label><input type="radio" name="total_promos" value="4"> 4</label>
-            </div>
+        document.getElementById('next-btn-4').addEventListener('click', function() {
+            currentPage = 5;
+            showPage(currentPage);
+        });
 
-            <input type="submit" value="Submit">
-        </form>
-    </div>
+        // Redirect to result.html on form submit
+        //document.getElementById('questionnaire-form').addEventListener('submit', function(event) {
+        //    event.preventDefault(); // Prevent form from actually submitting
+        //    window.location.href = '/predict'; // Redirect to result.html
+        //});
+    </script>
+
 </body>
 </html>
