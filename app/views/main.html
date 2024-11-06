@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #7085D4;
+        }
+        .container {
+            width: 80%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-container, .results-container {
+            flex: 1;
+            padding: 20px;
+        }
+        .form-container {
+            border-right: 1px solid #ccc; 
+        }
+        form {
+            margin-bottom: 0;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        input[type="number"], input[type="submit"], input[type="button"] {
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            box-sizing: border-box; 
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049; 
+        }
+        input[type="button"] {
+            background-color: #ccc; 
+            color: #333;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="button"]:hover {
+            background-color: #bbb; 
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h2>Simple Classification Model Metrics</h2>
+            <form action="{{ url_for('compute') }}" method="post">
+                <label for="TP">True Positives (TP):</label>
+                <input type="number" id="TP" name="TP" step="any"><br><br>
+                <label for="TN">True Negatives (TN):</label>
+                <input type="number" id="TN" name="TN" step="any"><br><br>
+                <label for="FP">False Positives (FP):</label>
+                <input type="number" id="FP" name="FP" step="any"><br><br>
+                <label for="FN">False Negatives (FN):</label>
+                <input type="number" id="FN" name="FN" step="any"><br><br>
+                <input type="submit" value="Compute">
+            </form>
+        </div>
+        <div class="results-container">
+            {% if precision is not none %}
+            <h2>Results:</h2>
+            <table>
+                <tr>
+                    <th>Metric</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Precision</td>
+                    <td>{{ precision }}</td>
+                </tr>
+                <tr>
+                    <td>Recall</td>
+                    <td>{{ recall }}</td>
+                </tr>
+                <tr>
+                    <td>F1 Score</td>
+                    <td>{{ f1_score }}</td>
+                </tr>
+                <tr>
+                    <td>Accuracy</td>
+                    <td>{{ accuracy }}</td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td>{{ total }}</td>
+                </tr>
+                <tr>
+                    <td>Interpretation</td>
+                    <td>{{ interpretation }}</td>
+                </tr>
+            </table>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
