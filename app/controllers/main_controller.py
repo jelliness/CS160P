@@ -22,17 +22,21 @@ def predict():
         'living_with', 'children', 'family_size', 'is_parent', 'total_promos'
     ]
 
+    # Check for missing fields
     missing_fields = [field for field in required_fields if field not in data or data[field] is None]
     if missing_fields:
         return jsonify({'error': f'Missing or empty value for {missing_fields}'}), 400
-    
-    # Pass the data to predict_class (ensure that predict_class returns the correct format)
-    
-    prediction_result = predict_class([data[field] for field in required_fields])
-    print(prediction_result)
-    # Ensure prediction_result is a string or type that can be displayed
-    if not isinstance(prediction_result, str):
-        prediction_result = str(prediction_result)
-    
-    # Return the rendered result template
-    return render_template("result.html", customer_type=prediction_result)
+
+    # Extract values in the required order and print them
+    ordered_values = [data[field] for field in required_fields]
+    print("Ordered data values:", ordered_values)
+
+    # Pass the JSON data to predict_class
+    prediction_result = predict_class(ordered_values)
+
+    # Check if predict_class returned an error response
+    if isinstance(prediction_result, tuple):  # Means there was an error in predict_class
+        return prediction_result  # This will return the error response directly
+
+    # Render the result template with the prediction result
+    return render_template("result.html", customer_type=str(prediction_result))

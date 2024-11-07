@@ -125,25 +125,22 @@
         <div class="form-section" id="page-2">
             <h2>Family and Household</h2>
 
-            <label>Do you live alone?</label><br>
+            <label>Do you live with others?</label><br>
             <div class="radio-group">
-                <input type="radio" name="living_with" value="Yes"> Yes
-                <input type="radio" name="living_with" value="No"> No
+                <input type="radio" name="living_with" value="1"> Yes
+                <input type="radio" name="living_with" value="0"> No
             </div><br>
 
-            <label>Do you have any children?</label><br>
-            <div class="radio-group">
-                <input type="radio" name="children" value="Yes"> Yes
-                <input type="radio" name="children" value="No"> No
-            </div><br>
+            <label>How many children do you have?</label><br>
+            <input type="number" name="children"><br><br>
 
             <label for="family_size">Including yourself, how many people are in your family?</label>
             <input type="number" name="family_size"><br><br>
 
             <label>Are you a parent of one or more children?</label><br>
             <div class="radio-group">
-                <input type="radio" name="is_parent" value="Yes"> Yes
-                <input type="radio" name="is_parent" value="No"> No
+                <input type="radio" name="is_parent" value="1"> Yes
+                <input type="radio" name="is_parent" value="0"> No
             </div><br>
 
             <label for="kidhome">How many children under 12 years old live at home with you?</label>
