@@ -174,8 +174,8 @@
             <label for="recency">How many days has it been since your last purchase with us?</label>
             <input type="number" name="recency" min="0" required><br><br>
 
-            <label for="customer_for">How many days have you been a customer with us?</label>
-            <input type="number" name="customer_for" min="1" required><br><br>
+            <label for="customer_for">Select the date you became a customer with us:</label>
+            <input type="date" name="customer_for" id="customer_for" value="2013-01-01" required><br><br>
 
             <label for="total_promos">How many promotions have you used since you became our customer?</label>
             <input type="number" name="total_promos" min="0" required><br><br>
@@ -391,7 +391,13 @@
                 formData.forEach((value, key) => {
                     jsonData[key] = value;
                 });
-    
+                const latestEnrollmentDate = new Date('2014-06-29'); // Assume as most recent
+
+                // Convert user's selected date to `Customer_For`
+                const customerSince = new Date(jsonData["customer_for"]);
+                const transformedCustomerFor = latestEnrollmentDate - customerSince;
+                jsonData["customer_for"] = transformedCustomerFor;
+                console.log(transformedCustomerFor);
                 // Logging jsonData to check if it's correct
                 console.log(JSON.stringify(jsonData));
     
