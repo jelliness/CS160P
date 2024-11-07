@@ -45,6 +45,16 @@ def predict():
     # Check if predict_class returned an error response
     if isinstance(prediction_result, tuple):  # Means there was an error in predict_class
         return prediction_result  # This will return the error response directly
+    
+    characteristic = ""
+    if str(prediction_result) == "low spending & low income":
+        characteristic = "Individuals or households in this group typically struggle with limited financial resources. They may prioritize basic needs like food, shelter, and utilities, and avoid discretionary spending."
+    elif str(prediction_result) == "low spending & average income":
+        characteristic = "These individuals have moderate incomes but choose to keep their spending low. They might be conservative with their finances or prioritize savings for future security."
+    elif str(prediction_result) == "average spending & average income":
+        characteristic = "This group has a balance between their income and spending. They likely maintain a stable lifestyle, spending on both necessities and some discretionary items."
+    elif str(prediction_result) == "high spending & high income":
+        characteristic = "These individuals or households typically have high disposable income and spend freely on luxury goods, services, and experiences. They may prioritize quality and exclusivity over cost."
 
     # Render the result template with the prediction result
-    return render_template("result.html", customer_type=str(prediction_result))
+    return render_template("result.html", customer_type=str(prediction_result), insight=(characteristic))

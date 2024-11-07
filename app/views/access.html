@@ -9,34 +9,45 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
         }
         body {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: linear-gradient(135deg, #7670D4, #4D4CAF);
+            background: linear-gradient(135deg, #6a5acd, #4b0082);
+            font-family: 'Arial', sans-serif;
         }
         .quiz-container {
-            background-color: #fff;
-            padding: 60px;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            background-color: #ffffff;
+            padding: 40px 50px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             width: 100%;
-            max-width: 500px;
+            max-width: 550px;
             text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+        .quiz-container:hover {
+            transform: translateY(-10px);
         }
         h1 {
-            margin-bottom: 30px;
-            color: #4D4CAF;
-            font-size: 36px; /* Increased font size */
+            margin-bottom: 20px;
+            color: #4B0082;
+            font-size: 40px; /* Enhanced font size */
+            font-weight: bold;
+            letter-spacing: 1px;
         }
         p {
             margin-bottom: 40px;
             color: #555;
-            font-size: 20px; /* Increased font size */
-            line-height: 1.6;
+            font-size: 18px; /* Adjusted font size */
+            line-height: 1.8;
+            font-weight: 300;
+            max-width: 80%;
+            margin-left: auto;
+            margin-right: auto;
         }
         form {
             display: flex;
@@ -45,37 +56,48 @@
         }
         input[type="submit"] {
             width: 100%;
-            padding: 16px; /* Increased padding */
+            padding: 18px;
             border: none;
-            background-color: #4D4CAF;
+            background-color: #4B0082;
             color: #fff;
             cursor: pointer;
-            border-radius: 8px; /* Slightly larger border radius */
-            font-size: 18px; /* Increased font size */
-            transition: background-color 0.3s;
+            border-radius: 10px;
+            font-size: 20px; /* Enhanced font size */
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            letter-spacing: 1px;
         }
         input[type="submit"]:hover {
-            background-color: #3A399B;
+            background-color: #3e0071;
+            transform: scale(1.05);
         }
         .footer-text {
-            margin-top: 30px; /* Increased space */
+            margin-top: 20px;
             color: #777;
-            font-size: 16px; /* Increased font size */
+            font-size: 14px;
+            font-weight: 400;
         }
         .footer-text a {
-            color: #4D4CAF;
+            color: #4B0082;
             text-decoration: none;
-            font-size: 18px; /* Larger font for the link */
+            font-size: 16px;
+            font-weight: 500;
+        }
+        .footer-text a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
     <div class="quiz-container">
         <h1>Customer Type Quiz</h1>
-        <p>Discover your customer type by taking this quick and easy quiz! Get insights into your shopping style and preferences.</p>
+        <p>Find out which type of customer you are! Are you a budget-conscious shopper, a savvy saver, or a luxury spender? Take this quiz to discover your shopping habits and preferences.</p>
         <form action="{{ url_for('start') }}" method="post">
-            <input type="submit" value="Take Quiz">
+            <input type="submit" value="Take the Quiz">
         </form>
+        <div class="footer-text">
+            <p>Created by MCMC Group</p>
+        </div>
     </div>
 </body>
 </html>
