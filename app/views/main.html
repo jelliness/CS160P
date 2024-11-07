@@ -108,15 +108,15 @@
             <h2>Demographics</h2>
 
             <label for="education">What is your highest level of education?</label><br>
-            <input type="radio" name="education" value="0"> Undergraduate<br>
+            <input type="radio" name="education" value="0" required> Undergraduate<br>
             <input type="radio" name="education" value="1"> Graduate<br>
             <input type="radio" name="education" value="2"> Post-Graduate<br><br>
 
             <label for="income">What is your annual income in USD?</label>
-            <input type="number" name="income"><br><br>
+            <input type="number" name="income" min="1" required><br><br>
 
             <label for="age">What is your current age?</label>
-            <input type="number" name="age"><br><br>
+            <input type="number" name="age" min="1" required><br><br>
 
             <button type="button" id="next-btn-1">Next</button>
         </div>
@@ -125,29 +125,29 @@
         <div class="form-section" id="page-2">
             <h2>Family and Household</h2>
 
-            <label>Do you live with others?</label><br>
+            <label for="living_with">Do you live with others?</label><br>
             <div class="radio-group">
-                <input type="radio" name="living_with" value="1"> Yes
+                <input type="radio" name="living_with" value="1" required> Yes
                 <input type="radio" name="living_with" value="0"> No
             </div><br>
 
-            <label>How many children do you have?</label><br>
-            <input type="number" name="children"><br><br>
+            <label for="children">How many children do you have?</label><br>
+            <input type="number" name="children" min="0" required><br><br>
 
             <label for="family_size">Including yourself, how many people are in your family?</label>
-            <input type="number" name="family_size"><br><br>
+            <input type="number" name="family_size" min="0" required><br><br>
 
-            <label>Are you a parent of one or more children?</label><br>
+            <label for="is_parent">Are you a parent of one or more children?</label><br>
             <div class="radio-group">
-                <input type="radio" name="is_parent" value="1"> Yes
+                <input type="radio" name="is_parent" value="1" required> Yes
                 <input type="radio" name="is_parent" value="0"> No
             </div><br>
 
             <label for="kidhome">How many children under 12 years old live at home with you?</label>
-            <input type="number" name="kidhome"><br><br>
+            <input type="number" name="kidhome" min="0" required><br><br>
 
             <label for="teenhome">How many teenagers (ages 13-18) live at home with you?</label>
-            <input type="number" name="teenhome"><br><br>
+            <input type="number" name="teenhome" min="0" required><br><br>
 
             <button type="button" id="next-btn-2">Next</button>
         </div>
@@ -157,16 +157,16 @@
             <h2>Customer Engagement</h2>
 
             <label for="recency">How many days has it been since your last purchase with us?</label>
-            <input type="number" name="recency"><br><br>
+            <input type="number" name="recency" min="0" required><br><br>
 
             <label for="customer_for">How many days have you been a customer with us?</label>
-            <input type="number" name="customer_for"><br><br>
+            <input type="number" name="customer_for" min="1" required><br><br>
 
             <label for="total_promos">How many promotions have you used since you became our customer?</label>
-            <input type="number" name="total_promos"><br><br>
+            <input type="number" name="total_promos" min="0" required><br><br>
 
             <label for="num_web_visits_month">How many times do you visit our website in a typical month?</label>
-            <input type="number" name="num_web_visits_month"><br><br>
+            <input type="number" name="num_web_visits_month" min="0" required><br><br>
 
             <button type="button" id="next-btn-3">Next</button>
         </div>
@@ -176,37 +176,37 @@
             <h2>Purchase Behavior</h2>
 
             <label for="wines">How much do you spend on wine in a typical month (in USD)?</label>
-            <input type="number" name="wines"><br><br>
+            <input type="number" name="wines" min="0" required><br><br>
 
             <label for="fruits">How much do you spend on fruits in a typical month (in USD)?</label>
-            <input type="number" name="fruits"><br><br>
+            <input type="number" name="fruits" min="0" required><br><br>
 
             <label for="meat">How much do you spend on meat in a typical month (in USD)?</label>
-            <input type="number" name="meat"><br><br>
+            <input type="number" name="meat" min="0" required><br><br>
 
             <label for="fish">How much do you spend on fish in a typical month (in USD)?</label>
-            <input type="number" name="fish"><br><br>
+            <input type="number" name="fish" min="0" required><br><br>
 
             <label for="sweets">How much do you spend on sweets in a typical month (in USD)?</label>
-            <input type="number" name="sweets"><br><br>
+            <input type="number" name="sweets" min="0" required><br><br>
 
             <label for="gold">How much do you spend on gold or luxury items in a typical month (in USD)?</label>
-            <input type="number" name="gold"><br><br>
+            <input type="number" name="gold" min="0" required><br><br>
 
             <label for="num_deals_purchases">How many of your purchases are made with promotional deals in a typical month?</label>
-            <input type="number" name="num_deals_purchases"><br><br>
+            <input type="number" name="num_deals_purchases" min="0" required><br><br>
 
             <label for="num_web_purchases">How many purchases do you make online in a typical month?</label>
-            <input type="number" name="num_web_purchases"><br><br>
+            <input type="number" name="num_web_purchases" min="0" required><br><br>
 
             <label for="num_catalog_purchases">How many purchases do you make from catalogs in a typical month?</label>
-            <input type="number" name="num_catalog_purchases"><br><br>
+            <input type="number" name="num_catalog_purchases" min="0" required><br><br>
 
             <label for="num_store_purchases">How many purchases do you make in physical stores in a typical month?</label>
-            <input type="number" name="num_store_purchases"><br><br>
+            <input type="number" name="num_store_purchases" min="0" required><br><br>
 
             <label for="spent">What is your total spending with us so far (in USD)?</label>
-            <input type="number" name="spent"><br><br>
+            <input type="number" name="spent" min="0" required><br><br>
 
             <button type="button" id="next-btn-4">Next</button>
         </div>
@@ -217,31 +217,31 @@
 
             <label>Did you respond positively to our first marketing campaign?</label><br>
             <div class="radio-group">
-                <input type="radio" name="accepted_cmp1" value="1"> Yes
+                <input type="radio" name="accepted_cmp1" value="1" required> Yes
                 <input type="radio" name="accepted_cmp1" value="0"> No
             </div><br>
 
             <label>Did you respond positively to our second marketing campaign?</label><br>
             <div class="radio-group">
-                <input type="radio" name="accepted_cmp2" value="1"> Yes
+                <input type="radio" name="accepted_cmp2" value="1" required> Yes
                 <input type="radio" name="accepted_cmp2" value="0"> No
             </div><br>
 
             <label>Did you respond positively to our third marketing campaign?</label><br>
             <div class="radio-group">
-                <input type="radio" name="accepted_cmp3" value="1"> Yes
+                <input type="radio" name="accepted_cmp3" value="1" required> Yes
                 <input type="radio" name="accepted_cmp3" value="0"> No
             </div><br>
 
             <label>Did you respond positively to our fourth marketing campaign?</label><br>
             <div class="radio-group">
-                <input type="radio" name="accepted_cmp4" value="1"> Yes
+                <input type="radio" name="accepted_cmp4" value="1" required> Yes
                 <input type="radio" name="accepted_cmp4" value="0"> No
             </div><br>
 
             <label>Did you respond positively to our fifth marketing campaign?</label><br>
             <div class="radio-group">
-                <input type="radio" name="accepted_cmp5" value="1"> Yes
+                <input type="radio" name="accepted_cmp5" value="1" required> Yes
                 <input type="radio" name="accepted_cmp5" value="0"> No
             </div><br>
 
@@ -254,13 +254,13 @@
 
             <label for="complain">Have you ever made a formal complaint to us?</label><br>
             <div class="radio-group">
-                <input type="radio" name="complain" value="1"> Yes
+                <input type="radio" name="complain" value="1" required> Yes
                 <input type="radio" name="complain" value="0"> No
             </div><br>
 
             <label for="response">Do you usually respond to our surveys or feedback requests?</label><br>
             <div class="radio-group">
-                <input type="radio" name="response" value="1"> Yes
+                <input type="radio" name="response" value="1" required> Yes
                 <input type="radio" name="response" value="0"> No
             </div><br>
 
@@ -271,77 +271,139 @@
 
     <script>
         let currentPage = 1;
-
+    
+        function validatePage(pageNumber) {
+            const page = document.getElementById(`page-${pageNumber}`);
+            const inputs = page.querySelectorAll('[required]');
+            let isValid = true;
+            let errorMessage = "";
+    
+            inputs.forEach((input) => {
+                if (!input.checkValidity()) {
+                    isValid = false;
+    
+                    let label = document.querySelector(`label[for="${input.name}"]`);
+    
+                    // Find the closest label element associated with the input
+                    if (input.type === 'radio') {
+                        label = page.querySelector(`label[for="${input.name}"]`) || input.closest('.radio-group').previousElementSibling;
+                    } else if (!label) {
+                        label = input.previousElementSibling;
+                    }
+    
+                    if (label) {
+                        if (input.type === 'number') {
+                            if (input.value === "") {
+                                errorMessage += `Input for '${label.innerText}' is required.\n`;
+                            } else if (input.value < input.min) {
+                                errorMessage += `Input for '${label.innerText}' must be greater than or equal to ${input.min}.\n`;
+                            }
+                        } else if (input.type === 'radio') {
+                            const groupName = input.name;
+                            const radios = page.querySelectorAll(`input[name="${groupName}"]`);
+                            const isChecked = Array.from(radios).some(radio => radio.checked);
+                            if (!isChecked) {
+                                errorMessage += `Please select an option for '${label.innerText}'.\n`;
+                            }
+                        }
+                    } else {
+                        // Fallback if no label is found
+                        errorMessage += `Input for a required field is missing.\n`;
+                    }
+                }
+            });
+    
+            if (!isValid) {
+                alert(errorMessage);
+            }
+    
+            return isValid;
+        }
+    
         function showPage(page) {
-            document.querySelectorAll('.form-section').forEach(function(section) {
+            document.querySelectorAll('.form-section').forEach(function (section) {
                 section.classList.remove('active');
             });
             document.getElementById('page-' + page).classList.add('active');
         }
-
-        document.getElementById('next-btn-1').addEventListener('click', function() {
-            currentPage = 2;
-            showPage(currentPage);
+    
+        document.getElementById('next-btn-1').addEventListener('click', function () {
+            if (validatePage(1)) {
+                currentPage = 2;
+                showPage(currentPage);
+            }
         });
-
-        document.getElementById('next-btn-2').addEventListener('click', function() {
-            currentPage = 3;
-            showPage(currentPage);
+    
+        document.getElementById('next-btn-2').addEventListener('click', function () {
+            if (validatePage(2)) {
+                currentPage = 3;
+                showPage(currentPage);
+            }
         });
-
-        document.getElementById('next-btn-3').addEventListener('click', function() {
-            currentPage = 4;
-            showPage(currentPage);
+    
+        document.getElementById('next-btn-3').addEventListener('click', function () {
+            if (validatePage(3)) {
+                currentPage = 4;
+                showPage(currentPage);
+            }
         });
-
-        document.getElementById('next-btn-4').addEventListener('click', function() {
-            currentPage = 5;
-            showPage(currentPage);
+    
+        document.getElementById('next-btn-4').addEventListener('click', function () {
+            if (validatePage(4)) {
+                currentPage = 5;
+                showPage(currentPage);
+            }
         });
-
-        document.getElementById('next-btn-5').addEventListener('click', function() {
-            currentPage = 6;
-            showPage(currentPage);
+    
+        document.getElementById('next-btn-5').addEventListener('click', function () {
+            if (validatePage(5)) {
+                currentPage = 6;
+                showPage(currentPage);
+            }
         });
-
-        document.getElementById('questionnaire-form').addEventListener('submit', function(event) {
+    
+        document.getElementById('questionnaire-form').addEventListener('submit', function (event) {
             event.preventDefault(); // Prevent the default form submission
-
-            // Collect form data
-            const formData = new FormData(event.target);
-            const jsonData = {};
-
-            // Fixing the arrow function typo and collecting form data properly
-            formData.forEach((value, key) => {
-                jsonData[key] = value;
-            });
-
-            // Logging jsonData to check if it's correct
-            console.log(JSON.stringify(jsonData));
-
-            // Send JSON data using fetch API
-            fetch('/predict', { // Using '/predict' as the endpoint URL.
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(jsonData)
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.text();
-            })
-            .then(data => {
-                // Display the result on the page
-                document.body.innerHTML = data;  // This will replace the whole body with the response HTML
-            })
-            .catch(error => {
-                console.error('There was a problem with the fetch operation:', error);
-            });
+    
+            if (validatePage(6)) {
+                // Collect form data
+                const formData = new FormData(event.target);
+                const jsonData = {};
+    
+                formData.forEach((value, key) => {
+                    jsonData[key] = value;
+                });
+    
+                // Logging jsonData to check if it's correct
+                console.log(JSON.stringify(jsonData));
+    
+                // Send JSON data using fetch API
+                fetch('/predict', { // Using '/predict' as the endpoint URL.
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(jsonData)
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    // Display the result on the page
+                    document.body.innerHTML = data;  // This will replace the whole body with the response HTML
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
+                });
+            }
         });
     </script>
+    
+    
+    
 
 </body>
 </html>
