@@ -66,11 +66,19 @@
             color: #333;
             font-weight: 500;
         }
+        #customer-image {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Customer Prediction Result</h1>
+        <div class="image-container">
+            <img src="{{ url_for('static', filename=path) }}" id="customer-image">
+        </div>
         <div class="result">
             Customer Type: {{ customer_type }}
         </div>

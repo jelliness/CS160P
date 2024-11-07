@@ -49,12 +49,17 @@ def predict():
     characteristic = ""
     if str(prediction_result) == "low spending & low income":
         characteristic = "Individuals or households in this group typically struggle with limited financial resources. They may prioritize basic needs like food, shelter, and utilities, and avoid discretionary spending."
+        image_path="1.png"
     elif str(prediction_result) == "low spending & average income":
         characteristic = "These individuals have moderate incomes but choose to keep their spending low. They might be conservative with their finances or prioritize savings for future security."
+        image_path="2.png"
     elif str(prediction_result) == "average spending & average income":
         characteristic = "This group has a balance between their income and spending. They likely maintain a stable lifestyle, spending on both necessities and some discretionary items."
+        image_path="3.png"
     elif str(prediction_result) == "high spending & high income":
         characteristic = "These individuals or households typically have high disposable income and spend freely on luxury goods, services, and experiences. They may prioritize quality and exclusivity over cost."
+        image_path="4.png"
 
+    print(image_path)
     # Render the result template with the prediction result
-    return render_template("result.html", customer_type=str(prediction_result), insight=(characteristic))
+    return render_template("result.html", customer_type=str(prediction_result), insight=(characteristic),  path=image_path)
