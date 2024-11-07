@@ -13,13 +13,13 @@ def predict():
     if not data:
         return jsonify({'error': 'Invalid or missing JSON data'}), 400
 
-    # List of fields that should not be empty or null
+    # List of fields that should not be empty or null, excluding 'children'
     required_fields = [
         'education', 'income', 'kidhome', 'teenhome', 'recency', 'wines', 'fruits', 'meat',
         'fish', 'sweets', 'gold', 'num_deals_purchases', 'num_web_purchases', 'num_catalog_purchases',
         'num_store_purchases', 'num_web_visits_month', 'accepted_cmp3', 'accepted_cmp4', 'accepted_cmp5',
         'accepted_cmp1', 'accepted_cmp2', 'complain', 'response', 'customer_for', 'age', 'spent',
-        'living_with', 'children', 'family_size', 'is_parent', 'total_promos'
+        'living_with', 'is_parent', 'total_promos'
     ]
 
     # Check for missing fields
@@ -27,8 +27,16 @@ def predict():
     if missing_fields:
         return jsonify({'error': f'Missing or empty value for {missing_fields}'}), 400
 
-    # Extract values in the required order and print them
-    ordered_values = [data[field] for field in required_fields]
+    # Calculate 'children' as an integer based on 'kidhome' and 'teenhome'
+    children = int(data['kidhome']) + int(data['teenhome'])
+    
+    # Extract values in the required order, inserting 'children' before 'family_size'
+    ordered_values = [
+        data[field] for field in required_fields[:24]
+    ] + [children] + [data['family_size']] + [
+        data[field] for field in required_fields[24:]
+    ]
+
     print("Ordered data values:", ordered_values)
 
     # Pass the JSON data to predict_class
