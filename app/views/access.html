@@ -17,15 +17,17 @@
             align-items: center;
             height: 100vh;
             background: linear-gradient(135deg, #6a5acd, #4b0082);
+            background-image: url('assets/bg_consumer.png');
+            background-size: cover;
             font-family: 'Arial', sans-serif;
         }
         .quiz-container {
             background-color: #ffffff;
             padding: 40px 50px;
-            border-radius: 12px;
+            border-radius: 2rem;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             width: 100%;
-            max-width: 550px;
+            max-width: 800px;
             text-align: center;
             transition: transform 0.3s ease-in-out;
         }
@@ -35,19 +37,25 @@
         h1 {
             margin-bottom: 20px;
             color: #4B0082;
-            font-size: 40px; /* Enhanced font size */
-            font-weight: bold;
+            font-size: 60px; /* Enhanced font size */
+            font-weight: 800;
             letter-spacing: 1px;
         }
-        p {
+        .description {
             margin-bottom: 40px;
+        }
+        p {
             color: #555;
-            font-size: 18px; /* Adjusted font size */
-            line-height: 1.8;
-            font-weight: 300;
-            max-width: 80%;
+            font-size: 16px; /* Adjusted font size */
+            line-height: 1.5;
+            font-weight: 100;
+            max-width: 90%;
             margin-left: auto;
             margin-right: auto;
+        }
+        .footer{
+            opacity: 0.6;
+            font-size: 16px; /* Adjusted font size */
         }
         form {
             display: flex;
@@ -55,7 +63,7 @@
             align-items: center;
         }
         input[type="submit"] {
-            width: 100%;
+            width: 35%;
             padding: 18px;
             border: none;
             background-color: #4B0082;
@@ -91,12 +99,15 @@
 <body>
     <div class="quiz-container">
         <h1>Customer Type Quiz</h1>
-        <p>Find out which type of customer you are! Are you a budget-conscious shopper, a savvy saver, or a luxury spender? Take this quiz to discover your shopping habits and preferences.</p>
+        <div class="description">
+            <p>Find out which type of customer you are! Are you a budget-conscious shopper, a savvy saver, or a luxury spender? Take this quiz to discover your shopping habits and preferences.</p>
+        </div>
+        
         <form action="{{ url_for('start') }}" method="post">
             <input type="submit" value="Take the Quiz">
         </form>
         <div class="footer-text">
-            <p>Created by MCMC Group</p>
+            <p class="footer">Created by MCMC Group</p>
         </div>
     </div>
 </body>

@@ -7,43 +7,48 @@
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #5B6CFA, #4D4CAF);
-            margin: 0;
-            padding: 0;
+            background: linear-gradient(135deg, #6a5acd, #4b0082);
+            background-image: url('assets/bg_consumer.png');
+            background-size: cover;
+            background-position: top;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
         }
 
         h1 {
-            margin-bottom: 20px;
-            color: #4D4CAF;
-            font-size: 36px;
+            padding-top: 1rem;
+            color: #4B0082;
+            font-size: 50px; /* Enhanced font size */
+            font-weight: 800;
             text-align: center;
-            font-weight: bold;
+            line-height: 3rem
         }
 
         h2 {
             color: #555;
-            margin-top: 15px;
             font-size: 24px;
-            text-align: center;
+            font-weight: 800;
         }
 
         form {
-            width: 90%;
-            max-width: 700px;
+            width: 100%;
+            max-width: 800px;
             background-color: #ffffff;
-            padding: 25px;
-            border-radius: 12px;
+            border-radius: 2rem;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            margin: 0 auto;
+            margin: 2rem
+        }
+        
+        .user-form {
+            padding-left: 5rem;
+            padding-right: 5rem;
         }
 
         label {
-            font-size: 16px;
-            margin-top: 12px;
+            font-size: 18px;
+            margin-top: 1rem;
+            font-weight: 500;
             color: #333;
             display: block;
         }
@@ -54,42 +59,51 @@
 
         input[type="number"] {
             padding: 10px;
-            margin-bottom: 25px;
-            width: 100%;
+            margin-top: 1rem;
+            width: 85%;
+            margin-left: 2rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        input[type="date"] {
+            padding: 10px;
+            margin-top: 1rem;
+            width: 40%;
+            font-size: 16px;
+            margin-left: 2rem;
             border: 1px solid #ccc;
             border-radius: 8px;
             font-size: 14px;
         }
 
-        input[type="radio"] {
-            margin-right: 15px;
-        }
-
         .form-section {
-            margin-bottom: 25px;
             display: none;
         }
 
         .form-section.active {
-            display: block;
+            display: flex;
+            flex-direction: column;
         }
 
         button {
-            background-color: #3498db;
+            background-color: #4B0082;
+            transform: scale(1.05);
             color: white;
             border: none;
-            padding: 12px 25px;
-            font-size: 18px;
+            padding: 0.5em;
+            font-size: 16px;
             cursor: pointer;
             border-radius: 6px;
             display: block;
-            margin: 25px auto;
-            width: 50%;
+            margin-top: 3em;
+            margin-bottom: 3em;
+            width: 15%;
             transition: background-color 0.3s ease, transform 0.2s ease;
         }
 
         button:hover {
-            background-color: #2980b9;
+            background-color: #3e0071;
             transform: scale(1.05);
         }
 
@@ -97,17 +111,21 @@
             background-color: #7f8c8d;
             cursor: not-allowed;
         }
+        .buttons{
+            display: flex;
+            flex-direction: row;
+        }
 
         .radio-group {
-            margin-top: 12px;
+            margin-left: 2rem;
         }
 
         .radio-group input {
-            margin-right: 18px;
+            margin-right: 1rem;
         }
 
         #submit-btn {
-            background-color: #2ecc71;
+            background-color: #239251;
         }
 
         #submit-btn:hover {
@@ -121,170 +139,213 @@
         <!-- Demographics Page -->
         <div class="form-section active" id="page-1">
             <h1>Cluster Prediction Questionnaire</h1>
-            <h2>Demographics</h2>
+            <div class="user-form">
+                <h2>I. Demographics</h2>
+                <div class="questions">
+                    <label for="education">1. What is your highest level of education?</label><br>
+                    <div class="radio-group">
+                        <input type="radio" name="education" value="0" required> Undergraduate<br>
+                        <input type="radio" name="education" value="1"> Graduate<br>
+                        <input type="radio" name="education" value="2"> Post-Graduate<br><br>
+                    </div>      
 
-            <label for="education">What is your highest level of education?</label><br>
-            <input type="radio" name="education" value="0" required> Undergraduate<br>
-            <input type="radio" name="education" value="1"> Graduate<br>
-            <input type="radio" name="education" value="2"> Post-Graduate<br><br>
+                    <label for="income">2. What is your annual income in USD?</label>
+                    <input type="number" name="income" min="1" required><br><br>
 
-            <label for="income">What is your annual income in USD?</label>
-            <input type="number" name="income" min="1" required><br><br>
+                    <label for="age">3. What is your current age?</label>
+                    <input type="number" name="age" min="1" required><br><br>
 
-            <label for="age">What is your current age?</label>
-            <input type="number" name="age" min="1" required><br><br>
-
-            <button type="button" id="next-btn-1">Next</button>
+                    <div class="buttons">
+                        <button type="button" id="back-btn-1" style="background-color: #6b6b6b; margin-right: 2rem">Back</button>
+                        <button type="button" id="next-btn-1">Next</button>
+                    </div>
+                </div>          
+            </div>          
         </div>
 
         <!-- Family and Household Page -->
         <div class="form-section" id="page-2">
             <h1>Cluster Prediction Questionnaire</h1>
-            <h2>Family and Household</h2>
+            <div class="user-form">
+                <h2>II. Family and Household</h2>
+                <div class="questions">
+                    <label for="living_with">4. Do you live with your wife/husband?</label><br>
+                    <div class="radio-group">
+                        <input type="radio" name="living_with" value="1" required> Yes <br>
+                        <input type="radio" name="living_with" value="0"> No
+                    </div><br>
 
-            <label for="living_with">Do you live with your wife/husband?</label><br>
-            <div class="radio-group">
-                <input type="radio" name="living_with" value="1" required> Yes
-                <input type="radio" name="living_with" value="0"> No
-            </div><br>
+                    <label for="family_size">5. Including yourself, how many people are in your family?</label>
+                    <input type="number" name="family_size" min="0" required><br><br>
 
-            <label for="family_size">Including yourself, how many people are in your family?</label>
-            <input type="number" name="family_size" min="0" required><br><br>
+                    <label for="is_parent">6. Are you a parent of one or more children?</label><br>
+                    <div class="radio-group">
+                        <input type="radio" name="is_parent" value="1" required> Yes <br>
+                        <input type="radio" name="is_parent" value="0"> No
+                    </div><br>
 
-            <label for="is_parent">Are you a parent of one or more children?</label><br>
-            <div class="radio-group">
-                <input type="radio" name="is_parent" value="1" required> Yes
-                <input type="radio" name="is_parent" value="0"> No
-            </div><br>
+                    <label for="kidhome">7. How many children under 12 years old live at home with you?</label>
+                    <input type="number" name="kidhome" min="0" required><br><br>
 
-            <label for="kidhome">How many children under 12 years old live at home with you?</label>
-            <input type="number" name="kidhome" min="0" required><br><br>
+                    <label for="teenhome">8. How many teenagers (ages 13-18) live at home with you?</label>
+                    <input type="number" name="teenhome" min="0" required><br><br>
 
-            <label for="teenhome">How many teenagers (ages 13-18) live at home with you?</label>
-            <input type="number" name="teenhome" min="0" required><br><br>
-
-            <button type="button" id="next-btn-2">Next</button>
+                    <div class="buttons">
+                        <button type="button" id="back-btn-2" style="background-color: #6b6b6b; margin-right: 2rem">Back</button>
+                        <button type="button" id="next-btn-2">Next</button>
+                    </div>
+                </div>         
+            </div>      
         </div>
 
         <!-- Customer Engagement Page -->
         <div class="form-section" id="page-3">
             <h1>Cluster Prediction Questionnaire</h1>
-            <h2>Customer Engagement</h2>
+            <div class="user-form">
+                <h2>III. Customer Engagement</h2>
+                <div class="questions">
+                    <label for="recency">9. How many days has it been since your last purchase with us?</label>
+                    <input type="number" name="recency" min="0" required><br><br>
 
-            <label for="recency">How many days has it been since your last purchase with us?</label>
-            <input type="number" name="recency" min="0" required><br><br>
+                    <label for="customer_for">10. Select the date you became a customer with us:</label>
+                    <input type="date" name="customer_for" id="customer_for" onload="getDate()" class="form-control" required><br><br>
 
-            <label for="customer_for">Select the date you became a customer with us:</label>
-            <input type="date" name="customer_for" id="customer_for" value="2012-01-01" required><br><br>
+                    <script>
+                        function getDate(){
+                            var today = new Date();
+                            document.getElementById("date").value = today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2) + '-' + ('0' + today.getDate()).slice(-2);
+                        }
+                    </script>
 
-            <label for="total_promos">How many promotions have you used since you became our customer?</label>
-            <input type="number" name="total_promos" min="0" required><br><br>
+                    <label for="total_promos">11. How many promotions have you used since you became our customer?</label>
+                    <input type="number" name="total_promos" min="0" required><br><br>
 
-            <label for="num_web_visits_month">How many times do you visit our website in a typical month?</label>
-            <input type="number" name="num_web_visits_month" min="0" required><br><br>
+                    <label for="num_web_visits_month">12. How many times do you visit our website in a typical month?</label>
+                    <input type="number" name="num_web_visits_month" min="0" required><br><br>
 
-            <button type="button" id="next-btn-3">Next</button>
+                    <div class="buttons">
+                        <button type="button" id="back-btn-3" style="background-color: #6b6b6b; margin-right: 2rem">Back</button>
+                        <button type="button" id="next-btn-3">Next</button>
+                    </div>
+                </div>         
+            </div>         
         </div>
 
         <!-- Purchase Behavior Page -->
         <div class="form-section" id="page-4">
             <h1>Cluster Prediction Questionnaire</h1>
-            <h2>Purchase Behavior</h2>
+            <div class="user-form">
+                <h2>IV. Purchase Behavior</h2>
+                <div class="questions">
+                    <label for="wines">13. How much do you spend on wine in a typical month (in USD)?</label>
+                    <input type="number" name="wines" min="0" required><br><br>
 
-            <label for="wines">How much do you spend on wine in a typical month (in USD)?</label>
-            <input type="number" name="wines" min="0" required><br><br>
+                    <label for="fruits">14. How much do you spend on fruits in a typical month (in USD)?</label>
+                    <input type="number" name="fruits" min="0" required><br><br>
 
-            <label for="fruits">How much do you spend on fruits in a typical month (in USD)?</label>
-            <input type="number" name="fruits" min="0" required><br><br>
+                    <label for="meat">15. How much do you spend on meat in a typical month (in USD)?</label>
+                    <input type="number" name="meat" min="0" required><br><br>
 
-            <label for="meat">How much do you spend on meat in a typical month (in USD)?</label>
-            <input type="number" name="meat" min="0" required><br><br>
+                    <label for="fish">16. How much do you spend on fish in a typical month (in USD)?</label>
+                    <input type="number" name="fish" min="0" required><br><br>
 
-            <label for="fish">How much do you spend on fish in a typical month (in USD)?</label>
-            <input type="number" name="fish" min="0" required><br><br>
+                    <label for="sweets">17. How much do you spend on sweets in a typical month (in USD)?</label>
+                    <input type="number" name="sweets" min="0" required><br><br>
 
-            <label for="sweets">How much do you spend on sweets in a typical month (in USD)?</label>
-            <input type="number" name="sweets" min="0" required><br><br>
+                    <label for="gold">18. How much do you spend on gold or luxury items in a typical month (in USD)?</label>
+                    <input type="number" name="gold" min="0" required><br><br>
 
-            <label for="gold">How much do you spend on gold or luxury items in a typical month (in USD)?</label>
-            <input type="number" name="gold" min="0" required><br><br>
+                    <label for="num_deals_purchases">19. How many of your purchases are made with promotional deals in a typical month?</label>
+                    <input type="number" name="num_deals_purchases" min="0" required><br><br>
 
-            <label for="num_deals_purchases">How many of your purchases are made with promotional deals in a typical month?</label>
-            <input type="number" name="num_deals_purchases" min="0" required><br><br>
+                    <label for="num_web_purchases">20. How many purchases do you make online in a typical month?</label>
+                    <input type="number" name="num_web_purchases" min="0" required><br><br>
 
-            <label for="num_web_purchases">How many purchases do you make online in a typical month?</label>
-            <input type="number" name="num_web_purchases" min="0" required><br><br>
+                    <label for="num_catalog_purchases">21. How many purchases do you make from catalogs in a typical month?</label>
+                    <input type="number" name="num_catalog_purchases" min="0" required><br><br>
 
-            <label for="num_catalog_purchases">How many purchases do you make from catalogs in a typical month?</label>
-            <input type="number" name="num_catalog_purchases" min="0" required><br><br>
+                    <label for="num_store_purchases">22. How many purchases do you make in physical stores in a typical month?</label>
+                    <input type="number" name="num_store_purchases" min="0" required><br><br>
 
-            <label for="num_store_purchases">How many purchases do you make in physical stores in a typical month?</label>
-            <input type="number" name="num_store_purchases" min="0" required><br><br>
+                    <label for="spent">23. What is your total spending with us so far (in USD)?</label>
+                    <input type="number" name="spent" min="0" required><br><br>
 
-            <label for="spent">What is your total spending with us so far (in USD)?</label>
-            <input type="number" name="spent" min="0" required><br><br>
-
-            <button type="button" id="next-btn-4">Next</button>
+                    <div class="buttons">
+                        <button type="button" id="back-btn-4" style="background-color: #6b6b6b; margin-right: 2rem">Back</button>
+                        <button type="button" id="next-btn-4">Next</button>
+                    </div>
+                </div>    
+            </div>      
         </div>
 
         <!-- Marketing Campaign Engagement Page -->
         <div class="form-section" id="page-5">
             <h1>Cluster Prediction Questionnaire</h1>
-            <h2>Marketing Campaign Engagement</h2>
+            <div class="user-form">
+                <h2>V. Marketing Campaign Engagement</h2>
+                <div class="questions">
+                    <label>24. Did you respond positively to our first marketing campaign?</label><br>
+                    <div class="radio-group">
+                        <input type="radio" name="accepted_cmp1" value="1" required> Yes <br>
+                        <input type="radio" name="accepted_cmp1" value="0"> No
+                    </div><br>
 
-            <label>Did you respond positively to our first marketing campaign?</label><br>
-            <div class="radio-group">
-                <input type="radio" name="accepted_cmp1" value="1" required> Yes
-                <input type="radio" name="accepted_cmp1" value="0"> No
-            </div><br>
+                    <label>25. Did you respond positively to our second marketing campaign?</label><br>
+                    <div class="radio-group">
+                        <input type="radio" name="accepted_cmp2" value="1" required> Yes <br>
+                        <input type="radio" name="accepted_cmp2" value="0"> No
+                    </div><br>
 
-            <label>Did you respond positively to our second marketing campaign?</label><br>
-            <div class="radio-group">
-                <input type="radio" name="accepted_cmp2" value="1" required> Yes
-                <input type="radio" name="accepted_cmp2" value="0"> No
-            </div><br>
+                    <label>26. Did you respond positively to our third marketing campaign?</label><br>
+                    <div class="radio-group">
+                        <input type="radio" name="accepted_cmp3" value="1" required> Yes <br>
+                        <input type="radio" name="accepted_cmp3" value="0"> No
+                    </div><br>
 
-            <label>Did you respond positively to our third marketing campaign?</label><br>
-            <div class="radio-group">
-                <input type="radio" name="accepted_cmp3" value="1" required> Yes
-                <input type="radio" name="accepted_cmp3" value="0"> No
-            </div><br>
+                    <label>27. Did you respond positively to our fourth marketing campaign?</label><br>
+                    <div class="radio-group">
+                        <input type="radio" name="accepted_cmp4" value="1" required> Yes <br>
+                        <input type="radio" name="accepted_cmp4" value="0"> No
+                    </div><br>
 
-            <label>Did you respond positively to our fourth marketing campaign?</label><br>
-            <div class="radio-group">
-                <input type="radio" name="accepted_cmp4" value="1" required> Yes
-                <input type="radio" name="accepted_cmp4" value="0"> No
-            </div><br>
+                    <label>28. Did you respond positively to our fifth marketing campaign?</label><br>
+                    <div class="radio-group">
+                        <input type="radio" name="accepted_cmp5" value="1" required> Yes <br>
+                        <input type="radio" name="accepted_cmp5" value="0"> No
+                    </div><br>
 
-            <label>Did you respond positively to our fifth marketing campaign?</label><br>
-            <div class="radio-group">
-                <input type="radio" name="accepted_cmp5" value="1" required> Yes
-                <input type="radio" name="accepted_cmp5" value="0"> No
-            </div><br>
-
-            <button type="button" id="next-btn-5">Next</button>
+                    <div class="buttons">
+                        <button type="button" id="back-btn-5" style="background-color: #6b6b6b; margin-right: 2rem">Back</button>
+                        <button type="button" id="next-btn-5">Next</button>
+                    </div>
+                </div>            
+            </div>        
         </div>
 
         <!-- Complaints and Response Page -->
         <div class="form-section" id="page-6">
             <h1>Cluster Prediction Questionnaire</h1>
-            <h2>Complaints and Customer Response</h2>
+            <div class="user-form">
+                <h2>VI. Complaints and Customer Response</h2>
+                <div class="questions">
+                    <label for="complain">29. Have you ever made a formal complaint to us?</label><br>
+                    <div class="radio-group">
+                        <input type="radio" name="complain" value="1" required> Yes <br>
+                        <input type="radio" name="complain" value="0"> No
+                    </div><br>
 
-            <label for="complain">Have you ever made a formal complaint to us?</label><br>
-            <div class="radio-group">
-                <input type="radio" name="complain" value="1" required> Yes
-                <input type="radio" name="complain" value="0"> No
-            </div><br>
-
-            <label for="response">Do you usually respond to our surveys or feedback requests?</label><br>
-            <div class="radio-group">
-                <input type="radio" name="response" value="1" required> Yes
-                <input type="radio" name="response" value="0"> No
-            </div><br>
-
-            <button type="submit" id="submit-btn" value="Submit">Submit</button>
+                    <label for="response">30. Do you usually respond to our surveys or feedback requests?</label><br>
+                    <div class="radio-group">
+                        <input type="radio" name="response" value="1" required> Yes <br>
+                        <input type="radio" name="response" value="0"> No
+                    </div><br>
+                    <div class="buttons">
+                        <button type="button" id="back-btn-1" style="background-color: #6b6b6b; margin-right: 2rem">Back</button>
+                        <button type="submit" id="submit-btn" value="Submit">Submit</button>
+                    </div>
+                </div>          
+            </div>            
         </div>
-
     </form>
 
     <script>
