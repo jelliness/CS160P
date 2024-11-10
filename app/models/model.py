@@ -4,7 +4,7 @@ import numpy as np
 
 def predict_class(data):
     # Load the model using pickle
-    with open(r'./app/models/adaboost_model.pkl', 'rb') as model_file:
+    with open(r'./app/models/bagging_split_model.pkl', 'rb') as model_file:
         model = pickle.load(model_file)
         
     # Convert data list to numpy array for prediction
