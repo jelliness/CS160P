@@ -465,7 +465,7 @@
                 formData.forEach((value, key) => {
                     jsonData[key] = value;
                 });
-                const latestEnrollmentDate = new Date('2014-06-29'); // Assume as most recent
+                const latestEnrollmentDate = new Date(); // Current Date
 
                 // Convert user's selected date to Customer_For
                 const customerSince = new Date(jsonData["customer_for"]); // should be the format is %Y-%mm-%dd
