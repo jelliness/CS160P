@@ -47,18 +47,18 @@ def predict():
         return prediction_result  # This will return the error response directly
     
     characteristic = ""
-    if str(prediction_result) == "low spending & low income":
-        characteristic = "Individuals or households in this group typically struggle with limited financial resources. They may prioritize basic needs like food, shelter, and utilities, and avoid discretionary spending."
-        image_path="1.png"
-    elif str(prediction_result) == "low spending & average income":
-        characteristic = "These individuals have moderate incomes but choose to keep their spending low. They might be conservative with their finances or prioritize savings for future security."
-        image_path="2.png"
-    elif str(prediction_result) == "average spending & average income":
-        characteristic = "This group has a balance between their income and spending. They likely maintain a stable lifestyle, spending on both necessities and some discretionary items."
-        image_path="3.png"
+    if str(prediction_result) == "high spending & average income":
+        characteristic = "Individuals or households in this group likely have a balanced lifestyle. While their income is average, they tend to spend relatively more, possibly on maintaining a particular lifestyle or fulfilling aspirational needs."
+        image_path = "3.png"
+    elif str(prediction_result) == "low spending & low income":
+        characteristic = "These individuals or households often face financial constraints and adopt a frugal approach to spending, focusing on necessities while minimizing discretionary expenses."
+        image_path = "1.png"
     elif str(prediction_result) == "high spending & high income":
+        characteristic = "These individuals or households enjoy substantial financial freedom. Their high income allows for considerable spending on both necessities and luxury items, reflecting a focus on comfort and premium experiences."
+        image_path = "4.png"
+    elif str(prediction_result) == "high spending & low income":
         characteristic = "These individuals or households typically have high disposable income and spend freely on luxury goods, services, and experiences. They may prioritize quality and exclusivity over cost."
-        image_path="4.png"
+        image_path = "2.png"
 
     print(image_path)
     # Render the result template with the prediction result
